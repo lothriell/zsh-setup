@@ -66,12 +66,17 @@ install_zsh_autosuggestions() {
 
 install_oh_my_posh() {
 	mkdir -p "$HOME/.local/bin"
-	if command -v oh-my-posh >/dev/null 2>&1; then
-		log "oh-my-posh already installed — upgrading"
+	if [[ -x "$HOME/.local/bin/oh-my-posh" ]]; then
+		log "oh-my-posh already present — upgrading"
 	else
 		log "Installing oh-my-posh to ~/.local/bin"
 	fi
-	curl -fsSL https://ohmyposh.dev/install.sh | bash -s -- -d "$HOME/.local/bin" >/dev/null
+	curl -fsSL https://ohmyposh.dev/install.sh | bash -s -- -d "$HOME/.local/bin"
+
+	if [[ ! -x "$HOME/.local/bin/oh-my-posh" ]]; then
+		echo "oh-my-posh install did not produce ~/.local/bin/oh-my-posh" >&2
+		exit 1
+	fi
 
 	case ":$PATH:" in
 	*":$HOME/.local/bin:"*) ;;
