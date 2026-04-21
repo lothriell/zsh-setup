@@ -2,27 +2,36 @@
 # Sourced automatically by ~/.zshrc. After editing, run: exec zsh
 
 # --- Corporate proxy --------------------------------------------------------
-# Uncomment and fill in the placeholders. Both lower- and upper-case are set
-# because different tools look for different variants.
+# Fill in the four PROXY_* values, then uncomment the whole block.
+# Leave PROXY_USER / PROXY_PASS empty if the proxy does not require auth.
+# URL-encode specials in PROXY_PASS: @ -> %40, # -> %23, / -> %2F, : -> %3A
 
-# export http_proxy="http://PROXY_HOST:PROXY_PORT"
-# export https_proxy="http://PROXY_HOST:PROXY_PORT"
+# PROXY_HOST="proxy.corp.example"
+# PROXY_PORT="8080"
+# PROXY_USER=""
+# PROXY_PASS=""
+#
+# if [[ -n "$PROXY_USER" ]]; then
+#     _proxy_url="http://${PROXY_USER}:${PROXY_PASS}@${PROXY_HOST}:${PROXY_PORT}"
+# else
+#     _proxy_url="http://${PROXY_HOST}:${PROXY_PORT}"
+# fi
+#
+# export http_proxy="$_proxy_url"
+# export https_proxy="$_proxy_url"
 # export no_proxy="localhost,127.0.0.1,::1,.local,.lan"
 # export HTTP_PROXY="$http_proxy"
 # export HTTPS_PROXY="$https_proxy"
 # export NO_PROXY="$no_proxy"
-
-# If the proxy requires auth (URL-encode specials in PASSWORD: @ -> %40, # -> %23, / -> %2F):
-# export http_proxy="http://USER:PASSWORD@PROXY_HOST:PROXY_PORT"
-# export https_proxy="$http_proxy"
+# unset _proxy_url
 
 # --- git (uses its own config, not env vars) -------------------------------
-# Run once, manually, after filling the proxy in above:
+# Run once, manually, after filling in the proxy above:
 #   git config --global http.proxy  "$http_proxy"
 #   git config --global https.proxy "$https_proxy"
 
 # --- apt (needs a root-owned file, not env vars) ---------------------------
-# Run once, manually:
+# Run once, manually (substitute PROXY_HOST/PROXY_PORT, no auth in this file):
 #   echo 'Acquire::http::Proxy  "http://PROXY_HOST:PROXY_PORT";'  | sudo tee    /etc/apt/apt.conf.d/95proxy
 #   echo 'Acquire::https::Proxy "http://PROXY_HOST:PROXY_PORT";'  | sudo tee -a /etc/apt/apt.conf.d/95proxy
 
