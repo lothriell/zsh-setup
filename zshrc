@@ -1,8 +1,10 @@
+export PATH="$HOME/.local/bin:$PATH"
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Theme (oh-my-posh handles the prompt, so this is just a fallback)
-ZSH_THEME="fino-time"
+# No oh-my-zsh theme — oh-my-posh renders the prompt (see bottom of file)
+ZSH_THEME=""
 
 # Plugins
 plugins=(git
