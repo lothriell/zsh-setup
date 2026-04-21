@@ -25,3 +25,6 @@ alias la='eza -la --icons --no-user --group-directories-first  --time-style long
 
 # Oh My Posh prompt
 eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/atomic.omp.json)"
+
+# Per-machine overrides (proxy, private aliases, etc.). Not committed to git.
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

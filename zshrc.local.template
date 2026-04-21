@@ -1,0 +1,31 @@
+# ~/.zshrc.local — per-machine overrides (not committed to git)
+# Sourced automatically by ~/.zshrc. After editing, run: exec zsh
+
+# --- Corporate proxy --------------------------------------------------------
+# Uncomment and fill in the placeholders. Both lower- and upper-case are set
+# because different tools look for different variants.
+
+# export http_proxy="http://PROXY_HOST:PROXY_PORT"
+# export https_proxy="http://PROXY_HOST:PROXY_PORT"
+# export no_proxy="localhost,127.0.0.1,::1,.local,.lan"
+# export HTTP_PROXY="$http_proxy"
+# export HTTPS_PROXY="$https_proxy"
+# export NO_PROXY="$no_proxy"
+
+# If the proxy requires auth (URL-encode specials in PASSWORD: @ -> %40, # -> %23, / -> %2F):
+# export http_proxy="http://USER:PASSWORD@PROXY_HOST:PROXY_PORT"
+# export https_proxy="$http_proxy"
+
+# --- git (uses its own config, not env vars) -------------------------------
+# Run once, manually, after filling the proxy in above:
+#   git config --global http.proxy  "$http_proxy"
+#   git config --global https.proxy "$https_proxy"
+
+# --- apt (needs a root-owned file, not env vars) ---------------------------
+# Run once, manually:
+#   echo 'Acquire::http::Proxy  "http://PROXY_HOST:PROXY_PORT";'  | sudo tee    /etc/apt/apt.conf.d/95proxy
+#   echo 'Acquire::https::Proxy "http://PROXY_HOST:PROXY_PORT";'  | sudo tee -a /etc/apt/apt.conf.d/95proxy
+
+# --- Other per-machine stuff ------------------------------------------------
+# alias work-vpn='...'
+# export SOME_SECRET="..."

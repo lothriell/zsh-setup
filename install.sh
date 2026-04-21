@@ -95,6 +95,13 @@ fetch_configs() {
 		cp "$HOME/.zshrc" "$backup"
 	fi
 	curl -fsSL "$REPO_RAW/zshrc" -o "$HOME/.zshrc"
+
+	if [[ ! -f "$HOME/.zshrc.local" ]]; then
+		log "Seeding ~/.zshrc.local template (edit it to set proxy etc.)"
+		curl -fsSL "$REPO_RAW/zshrc.local.template" -o "$HOME/.zshrc.local"
+	else
+		log "Keeping existing ~/.zshrc.local"
+	fi
 }
 
 set_default_shell() {

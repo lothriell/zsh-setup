@@ -27,6 +27,18 @@ Re-running is safe — each step is idempotent.
 - `install.sh` — installer
 - `zshrc` — the `.zshrc` installed to `$HOME`
 - `atomic.omp.json` — oh-my-posh theme
+- `zshrc.local.template` — seeded to `~/.zshrc.local` on first install for per-machine overrides (proxy, private aliases). Never touched on re-install.
+
+## Proxy / per-machine config
+
+`~/.zshrc` sources `~/.zshrc.local` if it exists. On first install the template is copied there; edit it on each work PC and fill in the proxy placeholders, then `exec zsh`. See the template for apt/git proxy one-liners too.
+
+To run the installer itself through a proxy (bootstrap case), set the env vars before the curl:
+
+```bash
+export https_proxy=http://PROXY_HOST:PROXY_PORT http_proxy=http://PROXY_HOST:PROXY_PORT
+curl -fsSL https://raw.githubusercontent.com/lothriell/zsh-setup/main/install.sh | bash
+```
 
 ## Font
 
